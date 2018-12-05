@@ -17,7 +17,7 @@ every instance that script is run.
   $LoggedInChecker = Get-AzureRmContext
 
  #If Statement to proceed to Login if $LoggedInChecker = $Null
- If($LoggedInChecker -eq $null)
+ If($null -eq $LoggedInChecker)
  {
     # Provide output for user clarification with a slight delay before receiving Microsoft Login prompt 
     Write-Host "There is no active AzureRM connection - prompting for Login Credentials..." -ForegroundColor Green
