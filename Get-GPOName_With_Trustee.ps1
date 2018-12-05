@@ -15,11 +15,14 @@ Foreach ($GPObject in $GPO)
 {
 
  $Trustee = Get-GPPermission -name $GPObject.DisplayName -all | Where Permission -eq GPOApply | Select Trustee
+ $Links = Get-GPOReport -Name $GPObject.DisplayName -ReportType XML | % { ([xml]$_).gpo | Select Name,@{l="LinkedTo";e={$_.LinksTo | % {$_.SOMName}}},@{l="OUPath";e={$_.LinksTo | %{$_.SOMPATH}}}}
  
  $OutputObject = [PSCustomObject]@{
 
         'GPO' = $GPObject.DisplayName
         'Applied To' = (@($Trustee.Trustee.Name) -join ', ')
+        'Linked To' = $Links.LinkedTo -join ', '
+        'OU Path' = $Links.OUPath -join ', '
     }
 
 $ReportArray += $OutputObject
