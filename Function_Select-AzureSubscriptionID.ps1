@@ -70,7 +70,9 @@ If($null -ne $LoggedInChecker) # IfStatement_1 (Search for ElseStatement_1)
 
         # Prompt User to Select the subscription based on the Index "Number" and place in $SubscriptionChoice variable
         Write-Host "Please Type the Number corresponding to the needed Subscription: " -ForegroundColor Green -NoNewLine
-        $SubscriptionChoice = Read-Host
+        $StringSubscriptionChoice = Read-Host
+        $SubscriptionChoice = [convert]::ToInt32($StringSubscriptionChoice, 10)
+        $SubscriptionChoice--
 
         if($SubscriptionChoice -le $SubscriptionArray.Length) # IfStatement_2 (Search for ElseStatement_2)
         {
