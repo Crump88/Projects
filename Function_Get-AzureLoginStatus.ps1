@@ -1,12 +1,10 @@
 <#
 
-Description:
-This function is utilized to determine if an active session was created within Powershell
-to access Azure.
+Description:    This function is utilized to determine if an active session was created within Powershell
+                to access Azure.
 
-Use:
-Can place in other scripts that perform azure functions without having to prompt for login
-every instance that script is run.
+Use:            Can place in other scripts that perform azure functions without having to prompt for login
+                every instance that script is run.
 
 #>
 
@@ -21,7 +19,7 @@ every instance that script is run.
  {
     # Provide output for user clarification with a slight delay before receiving Microsoft Login prompt 
     Write-Host "There is no active AzureRM connection - prompting for Login Credentials..." -ForegroundColor Green
-    Start-Sleep -Seconds 3
+    Start-Sleep -Seconds 1
     Login-AzureRmAccount
  }
  else
@@ -31,4 +29,3 @@ every instance that script is run.
  }
 }
 
-Get-AzureLoginStatus
