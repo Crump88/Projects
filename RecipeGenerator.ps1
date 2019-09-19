@@ -62,14 +62,26 @@
 
     # Obtain recipes via an API call with the defined ingredients and random page number
     $FirstSetRecipes = Invoke-RestMethod "https://www.food2fork.com/api/search?key=$ApiKey&q=$FirstProtein&page=$FirstPageNumber"
-    #$SecondSetRecipes = Invoke-RestMethod "https://www.food2fork.com/api/search?key=$ApiKey&q=$SecondProtein&page=$SecondPageNumber"
-    #$ThirdSetRecipes = Invoke-RestMethod "https://www.food2fork.com/api/search?key=$ApiKey&q=$ThirdProtein&page=$ThirdPageNumber"
+    $SecondSetRecipes = Invoke-RestMethod "https://www.food2fork.com/api/search?key=$ApiKey&q=$SecondProtein&page=$SecondPageNumber"
+    $ThirdSetRecipes = Invoke-RestMethod "https://www.food2fork.com/api/search?key=$ApiKey&q=$ThirdProtein&page=$ThirdPageNumber"
 
 
 # Randomly pick 10 recipes
 
 $RecipeArray = @()
+$RandomRecipe = Get-Random -InputObject(0..29) -count 3
+$i = 0
 
-$RecipeArray += $FirstSetRecipes.recipes[$RandomRecipe[0]]
+do{
+
+    $RecipeArray += $FirstSetRecipes.recipes[$RandomRecipe[$i]]
+    $RecipeArray += $SecondSetRecipes.recipes[$RandomRecipe[$i]]
+    $RecipeArray += $ThirdSetRecipes.recipes[$RandomRecipe[$i]]
+    $i++
+
+}while($i -le 2)
+
 
 # Format recipes and send in email
+
+$RecipeArray
