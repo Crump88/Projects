@@ -53,12 +53,12 @@
 
 
     # Generate random number for page results in the API
-    $FirstPageNumber = Get-Random -Minimum 1 -Maximum 5
-    $SecondPageNumber = Get-Random -Minimum 1 -Maximum 5
-    $ThirdPageNumber = Get-Random -Minimum 1 -Maximum 5
+    $FirstPageNumber = Get-Random -Minimum 1 -Maximum 3
+    $SecondPageNumber = Get-Random -Minimum 1 -Maximum 3
+    $ThirdPageNumber = Get-Random -Minimum 1 -Maximum 3
 
     #Set API Key
-    $ApiKey = 
+    $ApiKey = "795572ecff1572c54c29ab28fb2ff29e"
 
     # Obtain recipes via an API call with the defined ingredients and random page number
     $FirstSetRecipes = Invoke-RestMethod "https://www.food2fork.com/api/search?key=$ApiKey&q=$FirstProtein&page=$FirstPageNumber"
