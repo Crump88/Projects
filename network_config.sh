@@ -4,7 +4,7 @@
 
 
 #Getting local variables from the user to setup the network
-read -p   "Please enter the IP Address: " IP
+read -p   "Please enter the IP Address: " IP #yep
 read -p   "Please enter the Subnet Mask: " SUBNET
 read -p   "Please enter the gateway: " GATE
 read -p   "Please enter the DNS server IP Address: " DNS
